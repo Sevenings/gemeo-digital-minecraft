@@ -1,0 +1,3 @@
+[submodule "interface-mqtt-minecraft"]
+	path = interface-mqtt-minecraft
+	url = https://github.com/Sevenings/interface-mqtt-minecraft.git
