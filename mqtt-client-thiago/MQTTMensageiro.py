@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import paho.mqtt.client as mqtt
 
+from bancoMensagens import salvar_mensagem
+
 app = Flask(__name__)
 
 # Configuração do MQTT
@@ -38,6 +40,7 @@ def pagina():
             if result.rc != mqtt.MQTT_ERR_SUCCESS:
                 raise Exception("Erro ao publicar a mensagem")
 
+            salvar_mensagem(topico, mensagem)
             return render_template("PaginaMQTTClient.html", sucesso=True, mensagem=mensagem, topico=topico)
 
         except Exception as e:
